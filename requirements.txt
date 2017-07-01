@@ -1,0 +1,4 @@
+click
+krakenex==0.1.4
+requests==2.18.1
+docopt
