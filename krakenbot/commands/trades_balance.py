@@ -10,12 +10,12 @@ class TradesBalance:
         trades_history = TradesHistoryModel()
 
         head = [
-            'Crypto currency',
+            'Currency',
             'Trades balance',
-            'Volume',
-            'Cost',
-            'Value',
-            'Profit',
+            'Current volume',
+            'Cost (fiat)',
+            'Value (fiat)',
+            'Profit (fiat)',
         ]
         print_table_row(head, bold=True)
         for pair, trades in trades_history.trades:

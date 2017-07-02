@@ -8,8 +8,8 @@ class Spread:
         self.fetch_spread()
 
     def fetch_spread(self):
-        response = api_client.query_public('Spread', {'pair': '{}{}'.format(self.pair.crypto, self.pair.currency)})
-        self.spread = response['result']['X{}Z{}'.format(self.pair.crypto, self.pair.currency)]
+        response = api_client.query_public('Spread', {'pair': '{}{}'.format(self.pair.crypto, self.pair.fiat)})
+        self.spread = response['result'][str(self.pair)]
 
     @property
     def last_average(self):

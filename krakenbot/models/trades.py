@@ -38,11 +38,12 @@ class Trades:
             self.sold_buys = self.buys[i:]
             self.unsold_buys = self.buys[:i]
 
-        total_cost = 0
-        for buy in self.unsold_buys:
-            total_cost = total_cost + float(buy['cost'])
-            self.current_investment['vol'] = self.current_investment['vol'] + float(buy['vol'])
-        self.current_investment['cost'] = total_cost / self.current_investment['vol']
+        if self.unsold_buys:
+            total_cost = 0
+            for buy in self.unsold_buys:
+                total_cost = total_cost + float(buy['cost'])
+                self.current_investment['vol'] = self.current_investment['vol'] + float(buy['vol'])
+            self.current_investment['cost'] = total_cost / self.current_investment['vol']
 
     def set_trade_balance(self):
         bought = sum(float(buy['cost']) for buy in self.sold_buys)

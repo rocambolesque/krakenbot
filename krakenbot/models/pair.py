@@ -1,14 +1,18 @@
 class Pair:
+    crypto = ''
+    fiat = ''
+
     def __init__(self, pair):
         self.pair = pair
+        self.set_assets(pair)
 
     def __str__(self):
         return self.pair
 
-    @property
-    def crypto(self):
-        return self.pair[1:self.pair.find('Z')]
-
-    @property
-    def currency(self):
-        return self.pair[self.pair.find('Z')+1:]
+    def set_assets(self, pair):
+        self.crypto = pair[:4]
+        self.fiat = pair[4:]
+        if self.crypto[0] == 'X':
+            self.crypto = self.crypto[1:]
+        if self.fiat[0] == 'Z':
+            self.fiat = self.fiat[1:]
